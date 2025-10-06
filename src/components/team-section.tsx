@@ -4,6 +4,28 @@ import { useEffect, useRef, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { Users, Linkedin } from "lucide-react";
 import mayurImage from '@/assets/leads/mayur.png'
+import sanchitImage from '@/assets/leads/sanchit.png'
+import shrajalImage from '@/assets/leads/shrajal.png'
+import rajratnaImage from '@/assets/leads/rajratna.png'
+
+// 1. Dynamically import all member images from the specified folder.
+const memberImageModules = import.meta.glob('@/assets/membersimg/*.png', {
+  eager: true, // Eagerly load the modules
+  import: 'default', // Import the default export (the image path)
+});
+
+// 2. Create a clean map from a member ID to their image path.
+const memberImages: { [key: string]: string } = {};
+for (const path in memberImageModules) {
+  // Get the filename (e.g., "5.png") from the full path
+  const filename = path.split('/').pop();
+  if (filename) {
+    // Get the ID (e.g., "5") from the filename
+    const id = filename.split('.')[0];
+    memberImages[id] = memberImageModules[path] as string;
+  }
+}
+
 
 export function TeamSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,7 +48,7 @@ export function TeamSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Core Lead
+  // Core Lead (no changes here)
   const coreLead = {
     id: 1,
     name: "Mayur Patil",
@@ -35,79 +57,80 @@ export function TeamSection() {
     linkedin: "https://www.linkedin.com/in/mayur-patil-1451ba2b1/"
   }
 
+  // Team Leads (no changes here)
   const teamLeads = [
     {
       id: 2,
       name: "Sanchit Kumbhar",
       role: "Technical Lead",
-      image: mayurImage,
+      image: sanchitImage,
       linkedin: "https://www.linkedin.com/in/sanchit-kumbhar-85b44a289/"
     },
     {
       id: 3,
       name: "Shrajal Upadhyay",
       role: "Management Lead",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHN0dWRlbnQlMjBpbmRpYW58ZW58MHx8fHwxNzU4Mjk0MzU1fDA&ixlib=rb-4.1.0&q=80&w=300",
+      image: shrajalImage,
       linkedin: "https://www.linkedin.com/in/shrajal-upadhyay-8b5329248/"
     },
     {
       id: 4,
       name: "Rajratna Suralkar",
       role: "Media and Outreach Lead",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHN0dWRlbnR8ZW58MHx8fHwxNzU4Mjk0MzU1fDA&ixlib=rb-4.1.0&q=80&w=300",
+      image: rajratnaImage,
       linkedin: "https://www.linkedin.com/in/rajratna-b-suralkar-588727287/"
     }
   ]
 
-  // All Team Members organized by department
+  // 3. Update team members to use the dynamically imported images
   const technicalTeam = [
     {
       id: 5,
       name: "Aniket Yelameli",
       role: "Backend Developer",
-      image: mayurImage,
+      image: memberImages['23'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/aniket-yelameli/"
     },
     {
       id: 6,
       name: "Ayaan Khan",
       role: "Frontend Developer",
-      image: "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHN0dWRlbnR8ZW58MHx8fHwxNzU4Mjk0MzU1fDA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['10'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/ayaankhan0717?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 7,
       name: "Adnan Chherawala",
       role: "Mobile Developer",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjBzdHVkZW50fGVufDB8fHx8MTc1ODI5NDM1NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['12'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/adnanchherawala/"
     },
     {
       id: 8,
       name: "Bhargavi Adhav",
       role: "DevOps Engineer",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21lbiUyMHN0dWRlbnR8ZW58MHx8fHwxNzU4Mjk0NDIzfDA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['24'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/bhargavi-adhav-97645b289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 15,
       name: "Srujan Pote",
       role: "AI/ML Engineer",
-      image: "https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['3'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/srujanpote?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 16,
       name: "Ritika Mohite",
       role: "Cloud Engineer",
-      image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['17'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/ritika-mohite-152931289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 17,
       name: "Shaunak Naik",
       role: "QA Engineer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['20'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/shaunak-naik-684644375/"
     },
   ]
@@ -116,73 +139,73 @@ export function TeamSection() {
     {
       id: 9,
       name: "Aryan Raina",
-      image: "https://images.unsplash.com/photo-1557862921-37829c790f19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['6'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/aryan-raina-041570322/"
     },
     {
       id: 10,
       name: "Shruti Ghuge",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c6c41b31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHN0dWRlbnR8ZW58MHx8fHwxNzU4Mjk0NDIzfDA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/shruti-ghuge-182977364/"
     },
     {
       id: 11,
       name: "Vaidehi Doke",
-      image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjBzdHVkZW50fGVufDB8fHx8MTc1ODI5NDQyM3ww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/vaidehi-doke-22062005s/"
     },
     {
       id: 18,
       name: "Piyush Sakhalkar",
-      image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['22'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/piyush-sakhalkar-363931289/"
     },
     {
       id: 19,
       name: "Eshaan Razdan",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['7'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/eshaan-razdan-625320320/"
     },
     {
       id: 20,
       name: "Sakshi Dube",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['13'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/sakshi-dubey-b48477270/"
     },
     {
       id: 21,
       name: "Pavankumar Thakur",
-      image: "https://images.unsplash.com/photo-1557862921-37829c790f19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/pavankumar-thakur-b52757384/"
     },
     {
       id: 22,
       name: "Rohan Doke",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/rohan-doke-9b9a8a359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 23,
       name: "Sneha Koul",
-      image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['14'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/sneha-koul-192737375/"
     },
     {
       id: 24,
       name: "Sanika Kadam",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/sanika-kadam-01ab57356/"
     },
     {
       id: 25,
       name: "Tanvi Chougule",
-      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/tanvi-chougule-501806330/"
     },
     {
       id: 30,
       name: "Shreya Kalekar",
-      image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/shreya-kalekar-077587384?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
   ]
@@ -191,43 +214,43 @@ export function TeamSection() {
     {
       id: 12,
       name: "Pradnya Pol",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjBzdHVkZW50fGVufDB8fHx8MTc1ODI5NDQyM3ww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/pradnya-pol-218448289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 13,
       name: "Kushal Agrawal",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHN0dWRlbnR8ZW58MHx8fHwxNzU4Mjk0NDIzfDA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://in.linkedin.com/in/kushal-agrawal-258ba9385"
     },
     {
       id: 14,
       name: "Vedant Dandge",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjBzdHVkZW50JTIwaW5kaWFufGVufDB8fXx8MTc1ODI5NDM1NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/vedant-dandge-481058319"
     },
     {
       id: 26,
       name: "Shubham Sonawane",
-      image: "https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://linkedin.com/in/nisha-patel"
     },
     {
       id: 27,
       name: "Atharva Guldagad",
-      image: "https://images.unsplash.com/photo-1615109398623-88346a601842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/atharva-guldagad-b09277331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 28,
       name: "Pratiksha Rajput",
-      image: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHdvbWFufGVufDB8fHx8MTc1ODU0NTc2NXww&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/pratiksha-rajput-5b3544340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 29,
       name: "Samarth Gavali",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMG1hbnxlbnwwfHx8fDE3NTg1NDU3NjV8MA&ixlib=rb-4.1.0&q=80&w=300",
+      image: memberImages['user'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/samarth-gavali-91676b356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
   ]
@@ -408,9 +431,9 @@ export function TeamSection() {
                       <h5 className="font-bold text-foreground font-google-sans text-lg leading-tight">
                         {member.name}
                       </h5>
-                      <p className="text-muted-foreground font-google-sans text-sm leading-relaxed">
+                      {member.role && <p className="text-muted-foreground font-google-sans text-sm leading-relaxed">
                         {member.role}
-                      </p>
+                      </p>}
                     </div>
 
                     {/* LinkedIn Icon - Top Right */}
@@ -459,9 +482,9 @@ export function TeamSection() {
                       <h5 className="font-bold text-foreground font-google-sans text-lg leading-tight">
                         {member.name}
                       </h5>
-                      <p className="text-muted-foreground font-google-sans text-sm leading-relaxed">
+                       {member.role && <p className="text-muted-foreground font-google-sans text-sm leading-relaxed">
                         {member.role}
-                      </p>
+                      </p>}
                     </div>
 
                     {/* LinkedIn Icon - Top Right */}
@@ -510,9 +533,9 @@ export function TeamSection() {
                       <h5 className="font-bold text-foreground font-google-sans text-lg leading-tight">
                         {member.name}
                       </h5>
-                      <p className="text-muted-foreground font-google-sans text-sm leading-relaxed">
+                       {member.role && <p className="text-muted-foreground font-google-sans text-sm leading-relaxed">
                         {member.role}
-                      </p>
+                      </p>}
                     </div>
 
                     {/* LinkedIn Icon - Top Right */}

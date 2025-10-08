@@ -101,35 +101,35 @@ export function TeamSection() {
     {
       id: 7,
       name: "Adnan Chherawala",
-      role: "Mobile Developer",
+      role: "Web Developer",
       image: memberImages['12'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/adnanchherawala/"
     },
     {
       id: 8,
       name: "Bhargavi Adhav",
-      role: "DevOps Engineer",
+      role: "Data Analyst",
       image: memberImages['24'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/bhargavi-adhav-97645b289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 15,
       name: "Srujan Pote",
-      role: "AI/ML Engineer",
+      role: "Data Analyst",
       image: memberImages['3'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/srujanpote?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 16,
       name: "Ritika Mohite",
-      role: "Cloud Engineer",
+      role: "AR/VR Developer",
       image: memberImages['17'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/ritika-mohite-152931289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 17,
       name: "Shaunak Naik",
-      role: "QA Engineer",
+      role: "AI/ML Engineer",
       image: memberImages['20'], // Dynamically assigned image
       linkedin: "https://www.linkedin.com/in/shaunak-naik-684644375/"
     },

@@ -285,7 +285,6 @@ export function EventsSection() {
             {/* Empty state - moved inside the conditional block */}
             {filteredEvents.length === 0 && (
               <div className="text-center py-16">
-                <div className="text-6xl mb-4">📅</div>
                 <h3 className="text-xl font-semibold text-foreground mb-2 font-google-sans">No events found</h3>
                 <p className="text-muted-foreground font-google-sans">Check back later for upcoming events in this category.</p>
               </div>

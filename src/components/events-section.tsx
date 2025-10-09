@@ -43,7 +43,7 @@ export function EventsSection() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch('http://localhost:5000/api/events');
+        const response = await fetch('https://gdgoc-tae-web-backend-2.onrender.com/api/events');
         if (!response.ok) {
           throw new Error('Failed to fetch events');
         }

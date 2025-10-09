@@ -9,18 +9,16 @@ import shrajalImage from '@/assets/leads/shrajal.png'
 import rajratnaImage from '@/assets/leads/rajratna.png'
 
 // 1. Dynamically import all member images from the specified folder.
-const memberImageModules = import.meta.glob('@/assets/membersimg/*.png', {
-  eager: true, // Eagerly load the modules
-  import: 'default', // Import the default export (the image path)
+const memberImageModules = import.meta.glob('@/assets/membersimg/*.{png,jpg,jpeg}', {
+  eager: true,
+  import: 'default', 
 });
 
 // 2. Create a clean map from a member ID to their image path.
 const memberImages: { [key: string]: string } = {};
 for (const path in memberImageModules) {
-  // Get the filename (e.g., "5.png") from the full path
   const filename = path.split('/').pop();
   if (filename) {
-    // Get the ID (e.g., "5") from the filename
     const id = filename.split('.')[0];
     memberImages[id] = memberImageModules[path] as string;
   }
@@ -88,49 +86,49 @@ export function TeamSection() {
       id: 5,
       name: "Aniket Yelameli",
       role: "Backend Developer",
-      image: memberImages['23'], // Dynamically assigned image
+      image: memberImages['23'], 
       linkedin: "https://www.linkedin.com/in/aniket-yelameli/"
     },
     {
       id: 6,
       name: "Ayaan Khan",
       role: "Frontend Developer",
-      image: memberImages['10'], // Dynamically assigned image
+      image: memberImages['10'], 
       linkedin: "https://www.linkedin.com/in/ayaankhan0717?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 7,
       name: "Adnan Chherawala",
       role: "Web Developer",
-      image: memberImages['12'], // Dynamically assigned image
+      image: memberImages['12'], 
       linkedin: "https://www.linkedin.com/in/adnanchherawala/"
     },
     {
       id: 8,
       name: "Bhargavi Adhav",
       role: "Data Analyst",
-      image: memberImages['24'], // Dynamically assigned image
+      image: memberImages['24'], 
       linkedin: "https://www.linkedin.com/in/bhargavi-adhav-97645b289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 15,
       name: "Srujan Pote",
       role: "Data Analyst",
-      image: memberImages['3'], // Dynamically assigned image
+      image: memberImages['3'], 
       linkedin: "https://www.linkedin.com/in/srujanpote?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 16,
       name: "Ritika Mohite",
       role: "AR/VR Developer",
-      image: memberImages['17'], // Dynamically assigned image
+      image: memberImages['17'], 
       linkedin: "https://www.linkedin.com/in/ritika-mohite-152931289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 17,
       name: "Shaunak Naik",
       role: "AI/ML Engineer",
-      image: memberImages['20'], // Dynamically assigned image
+      image: memberImages['20'], 
       linkedin: "https://www.linkedin.com/in/shaunak-naik-684644375/"
     },
   ]
@@ -139,74 +137,80 @@ export function TeamSection() {
     {
       id: 9,
       name: "Aryan Raina",
-      image: memberImages['6'], // Dynamically assigned image
+      image: memberImages['6'], 
       linkedin: "https://www.linkedin.com/in/aryan-raina-041570322/"
     },
     {
       id: 10,
       name: "Shruti Ghuge",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['15'],
       linkedin: "https://www.linkedin.com/in/shruti-ghuge-182977364/"
     },
     {
       id: 11,
       name: "Vaidehi Doke",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['9'], 
       linkedin: "https://www.linkedin.com/in/vaidehi-doke-22062005s/"
     },
     {
       id: 18,
       name: "Piyush Sakhalkar",
-      image: memberImages['22'], // Dynamically assigned image
+      image: memberImages['22'], 
       linkedin: "https://www.linkedin.com/in/piyush-sakhalkar-363931289/"
     },
     {
       id: 19,
       name: "Eshaan Razdan",
-      image: memberImages['7'], // Dynamically assigned image
+      image: memberImages['7'], 
       linkedin: "https://www.linkedin.com/in/eshaan-razdan-625320320/"
     },
     {
       id: 20,
       name: "Sakshi Dube",
-      image: memberImages['13'], // Dynamically assigned image
+      image: memberImages['13'], 
       linkedin: "https://www.linkedin.com/in/sakshi-dubey-b48477270/"
     },
     {
       id: 21,
       name: "Pavankumar Thakur",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['27'],
       linkedin: "https://www.linkedin.com/in/pavankumar-thakur-b52757384/"
     },
     {
       id: 22,
       name: "Rohan Doke",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['28'],
       linkedin: "https://www.linkedin.com/in/rohan-doke-9b9a8a359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 23,
       name: "Sneha Koul",
-      image: memberImages['14'], // Dynamically assigned image
+      image: memberImages['14'],
       linkedin: "https://www.linkedin.com/in/sneha-koul-192737375/"
     },
     {
       id: 24,
       name: "Sanika Kadam",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['16'],
       linkedin: "https://www.linkedin.com/in/sanika-kadam-01ab57356/"
     },
     {
       id: 25,
       name: "Tanvi Chougule",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['29'],
       linkedin: "https://www.linkedin.com/in/tanvi-chougule-501806330/"
     },
     {
       id: 30,
       name: "Shreya Kalekar",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['26'],
       linkedin: "https://www.linkedin.com/in/shreya-kalekar-077587384?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+        {
+      id: 31,
+      name: "Sayali Uppal" ,
+      image: memberImages['18'],
+      linkedin: "https://www.linkedin.com/in/sayali-uppal-04b603386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
   ]
 
@@ -214,43 +218,43 @@ export function TeamSection() {
     {
       id: 12,
       name: "Pradnya Pol",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['19'],
       linkedin: "https://www.linkedin.com/in/pradnya-pol-218448289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 13,
       name: "Kushal Agrawal",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['11'],
       linkedin: "https://in.linkedin.com/in/kushal-agrawal-258ba9385"
     },
     {
       id: 14,
       name: "Vedant Dandge",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['8'],
       linkedin: "https://www.linkedin.com/in/vedant-dandge-481058319"
     },
     {
       id: 26,
       name: "Shubham Sonawane",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['21'],
       linkedin: "https://linkedin.com/in/nisha-patel"
     },
     {
       id: 27,
       name: "Atharva Guldagad",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['5'],
       linkedin: "https://www.linkedin.com/in/atharva-guldagad-b09277331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 28,
       name: "Pratiksha Rajput",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['25'],
       linkedin: "https://www.linkedin.com/in/pratiksha-rajput-5b3544340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {
       id: 29,
       name: "Samarth Gavali",
-      image: memberImages['user'], // Dynamically assigned image
+      image: memberImages['4'],
       linkedin: "https://www.linkedin.com/in/samarth-gavali-91676b356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
   ]

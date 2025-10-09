@@ -27,14 +27,14 @@ export function AboutSection() {
 
   const stats = [
     { 
-      number: '10,000+', 
+      number: '1000+', 
       label: 'Participants',
       icon: Users,
       color: '#4285F4',
       bgColor: 'from-[#4285F4] to-[#3367D6]'
     },
     { 
-      number: '25+', 
+      number: '50+', 
       label: 'Sessions',
       icon: Code,
       color: '#EA4335',
@@ -48,8 +48,8 @@ export function AboutSection() {
       bgColor: 'from-[#FBBC05] to-[#F9AB00]'
     },
     { 
-      number: '2', 
-      label: 'Days',
+      number: '5', 
+      label: 'Years',
       icon: Lightbulb,
       color: '#34A853',
       bgColor: 'from-[#34A853] to-[#2E7D32]'

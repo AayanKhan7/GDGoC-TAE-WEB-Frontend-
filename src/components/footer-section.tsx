@@ -64,11 +64,9 @@ export function FooterSection() {
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-[#EA4335]" />
-                <span className="font-google-sans">gdgoc.tae@gmail.com</span>
-              </div>
-              <div className="flex items-center space-x-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-[#34A853]" />
-                <span className="font-google-sans">+91 98765 43210</span>
+                <a href="mailto:gdgoncampus.tae@gmail.com" className="font-google-sans hover:text-[#EA4335] transition-colors">
+                  gdgoncampus.tae@gmail.com
+                </a>
               </div>
             </div>
           </div>
@@ -89,6 +87,29 @@ export function FooterSection() {
                   </a>
                 </li>
               ))}
+            </ul>
+             <h4 className="font-bold text-foreground mb-6 font-google-sans">
+            </h4>
+             <h4 className="font-bold text-foreground mb-6 font-google-sans">
+              Developer Contact
+            </h4>
+              <ul className="space-y-3">
+              <li>
+                <a
+                  href="mailto:ayaankhan9605@gmail.com"
+                  className="text-muted-foreground hover:text-[#4285F4] transition-colors duration-200 font-google-sans"
+                >
+                  ayaankhan9605@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:aniketyelameli26@gmail.com"
+                  className="text-muted-foreground hover:text-[#4285F4] transition-colors duration-200 font-google-sans"
+                >
+                  aniketyelameli26@gmail.com
+                </a>
+              </li>
             </ul>
           </div>
           
@@ -116,11 +137,13 @@ export function FooterSection() {
             <div className="mt-8 space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-[#EA4335]" />
-                <span className="font-google-sans">gdgoc.tae@gmail.com</span>
+                <a href="mailto:gdgoncampus.tae@gmail.com" className="font-google-sans hover:text-[#EA4335] transition-colors">
+                  gdgoncampus.tae@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-[#34A353]" />
-                <span className="font-google-sans">+91 98765 43210</span>
+                <span className="font-google-sans">+91 97675 50382</span>
               </div>
             </div>
           </div>

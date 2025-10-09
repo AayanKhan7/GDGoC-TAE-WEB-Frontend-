@@ -24,7 +24,7 @@ import EventForm from './components/admin/EventForm';
 
 // A simple authentication check
 const isAuthenticated = () => {
-    return localStorage.getItem('x-admin-key') === 'supersecretkey';
+    return localStorage.getItem('x-admin-key') === 'admin@1205';
 };
 
 // A component to protect routes

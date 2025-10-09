@@ -21,7 +21,7 @@ const EventManagement: React.FC = () => {
     const [showForm, setShowForm] = useState(false);
     const navigate = useNavigate();
 
-    const API_URL = 'http://localhost:5000/api/events';
+    const API_URL = 'https://gdgoc-tae-web-backend-2.onrender.com/api/events';
 
     const fetchEvents = async () => {
         setIsLoading(true);
@@ -126,7 +126,7 @@ const EventManagement: React.FC = () => {
                     </>
                 )}
                 {showForm && (
-                    <EventForm event={editingEvent || undefined} onSuccess={() => setShowForm(false)} />
+                    <EventForm event={editingEvent || undefined} onSuccess={handleFormSuccess} />
                 )}
             </div>
         </div>

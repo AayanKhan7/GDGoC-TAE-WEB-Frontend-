@@ -43,7 +43,7 @@ export function ContactSection() {
     setSubmitMessage(null); // Clear previous messages
 
     try {
-      const response = await fetch('http://localhost:5000/api/messages', {
+      const response = await fetch('https://gdgoc-tae-web-backend-2.onrender.com/api/messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,8 +73,8 @@ export function ContactSection() {
       icon: Mail,
       title: "Email Us",
       description: "Get in touch via email",
-      value: "gdgoc.tae@gmail.com",
-      link: "mailto:gdgoc.tae@gmail.com",
+      value: "gdgoncampus.tae@gmail.com",
+      link: "mailto:gdgoncampus.tae@gmail.com",
       color: "#EA4335"
     },
     {

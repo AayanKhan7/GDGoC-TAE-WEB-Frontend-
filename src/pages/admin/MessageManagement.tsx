@@ -27,7 +27,7 @@ const MessageManagement: React.FC = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/messages', {
+            const response = await fetch('https://gdgoc-tae-web-backend-2.onrender.com/api/messages', {
                 headers: { 'x-admin-key': adminKey },
             });
             if (!response.ok) {
@@ -50,7 +50,7 @@ const MessageManagement: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:5000/api/messages/${id}/read`, {
+            const response = await fetch(`https://gdgoc-tae-web-backend-2.onrender.com/api/messages/${id}/read`, {
                 method: 'PATCH',
                 headers: { 'x-admin-key': adminKey },
             });
@@ -75,7 +75,7 @@ const MessageManagement: React.FC = () => {
         if (!window.confirm('Are you sure you want to delete this message?')) return;
 
         try {
-            const response = await fetch(`http://localhost:5000/api/messages/${id}`, {
+            const response = await fetch(`https://gdgoc-tae-web-backend-2.onrender.com/api/messages/${id}`, {
                 method: 'DELETE',
                 headers: { 'x-admin-key': adminKey },
             });

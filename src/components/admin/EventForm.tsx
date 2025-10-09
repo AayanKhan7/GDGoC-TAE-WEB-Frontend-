@@ -56,7 +56,7 @@ const EventForm: React.FC<EventFormProps> = ({ event, onSuccess }) => {
         }
 
         const method = event ? 'PATCH' : 'POST';
-        const url = event ? `http://localhost:5000/api/events/${event._id}` : 'http://localhost:5000/api/events';
+        const url = event ? `https://gdgoc-tae-web-backend-2.onrender.com/api/events/${event._id}` : 'https://gdgoc-tae-web-backend-2.onrender.com/api/events';
 
         try {
             const response = await fetch(url, {

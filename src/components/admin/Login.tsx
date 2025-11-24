@@ -8,7 +8,7 @@ const Login: React.FC = () => {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        if (adminKey === 'admin@1205') {
+        if (adminKey === 'admin@gdgoctae2005') {
             localStorage.setItem('x-admin-key', adminKey);
             navigate('/admin');
         } else {
